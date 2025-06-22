@@ -36,7 +36,9 @@ const routes: Routes = [
   { path: 'add-new-expense', component: AddNewCategoryExpenseComponent, canActivate: [AuthGuard] },
   { path: 'add-category', component: AddNewCategoryComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent }, // No guard needed for login
-  { path: 'register', component: RegisterComponent } // No guard needed for register
+  { path: 'register', component: RegisterComponent }, // No guard needed for register
+  { path: '**', redirectTo: '/login' }
+
 ];
 
 

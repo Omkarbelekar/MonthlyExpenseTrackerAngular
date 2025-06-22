@@ -15,7 +15,9 @@ export class AuthServiceService {
     sessionStorage.removeItem('UserInfo');
   }
   isLoggedIn(): boolean {
-    return !!sessionStorage.getItem(this.tokenKey); // Check if token exists
+    const userInfo = localStorage.getItem('UserInfo');
+    return !!userInfo; // returns true if userInfo exists
   }
-  
+
+
 }
