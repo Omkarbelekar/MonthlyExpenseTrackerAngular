@@ -37,8 +37,6 @@ const routes: Routes = [
   { path: 'add-category', component: AddNewCategoryComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent }, // No guard needed for login
   { path: 'register', component: RegisterComponent }, // No guard needed for register
-  { path: '**', redirectTo: '/login' }
-
 ];
 
 
