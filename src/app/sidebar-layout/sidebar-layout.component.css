@@ -1,0 +1,32 @@
+/* Sidebar */
+.bg-dark {
+  position: fixed;
+  height: 100%;
+  width: 250px;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+.nav-link {
+  font-size: 16px;
+  margin-bottom: 15px;
+}
+
+.nav-link.active {
+  font-weight: bold;
+  color: #ff9800 !important;
+}
+
+/* Main content */
+.container-fluid {
+  margin-left: 250px;
+}
+
+.row {
+  margin-top: 20px;
+}
+
+.router-outlet {
+  padding: 20px;
+}

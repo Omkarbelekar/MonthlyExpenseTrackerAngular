@@ -1,0 +1,38 @@
+ <app-sidebar-layout>
+  <router-outlet></router-outlet>
+</app-sidebar-layout>
+
+<div class="container py-4">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card shadow-sm">
+        <div class="card-header bg-info text-white text-center">
+          <h3>Expense History</h3>
+        </div>
+        <div class="card-body">
+          <ul class="list-group">
+            <li *ngFor="let e of expenses" class="list-group-item">
+              <div>
+                <strong>{{ e.description }}</strong> – ₹{{ e.amount }}
+              </div>
+              <div>
+                <small>Paid by: <span class="fw-bold">{{ e.paidBy }}</span></small>
+              </div>
+              <div class="mt-2">
+                <strong>Shared with:</strong>
+                <ul class="list-group list-group-flush">
+                  <li *ngFor="let s of e.shares" class="list-group-item">
+                    User {{ s.owedByUserId }} owes ₹{{ s.shareAmount }}
+                  </li>
+                </ul>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-sidebar-layout>
+  <router-outlet></router-outlet>
+</app-sidebar-layout>

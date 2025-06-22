@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="AddExpenseApp">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Add New Expense Form</title>
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Google Material Icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+</head>
+
+<body>
+  <form class="form-container" novalidate onsubmit="return false;" id="expenseForm" aria-labelledby="formHeading"
+    role="form">
+    <button type="button" class="back-button" aria-label="Go back" (click)="btnBack()">
+      <span class="material-icons md-18" aria-hidden="true">arrow_back</span> Back
+    </button>
+
+    <h1 id="formHeading">Add New Expense</h1>
+
+    <div class="mb-3">
+      <label for="category" class="form-label">Category</label>
+      <select id="category" name="category" class="form-select" aria-required="true" required
+        aria-describedby="categoryHelp" [(ngModel)]="SelCategoryMasterId" (change)="onCategoryChange()">
+        <option value="" selected>Select category</option>
+        <option *ngFor="let category of categoriesData" [value]="category.CategoryMasterId">
+          {{ category.CategoryName }}
+        </option>
+      </select>
+      <div id="categoryHelp" class="form-text">Select expense category</div>
+    </div>
+
+    <div class="mb-3">
+      <label for="allowedExpense" class="form-label">Allowed Expense</label>
+      <input type="text" id="allowedExpense" name="allowedExpense" class="form-control" placeholder="Allowed expense"
+        disabled aria-disabled="true" aria-describedby="allowedExpenseHelp" [(ngModel)]="AllowedExpense" />
+      <div id="allowedExpenseHelp" class="form-text">Allowed expense for selected category</div>
+    </div>
+
+    <div class="mb-3">
+      <label for="remainingExpense" class="form-label">Remaining Expense</label>
+      <input type="text" id="remainingExpense" name="remainingExpense" class="form-control"
+        placeholder="Remaining expense" disabled aria-disabled="true" aria-describedby="remainingExpenseHelp"
+        [(ngModel)]="RemainingExpense" />
+      <div id="remainingExpenseHelp" class="form-text">Remaining expense for selected category</div>
+    </div>
+
+    <div class="mb-3">
+      <label for="date" class="form-label">Date</label>
+      <input type="date" id="date" name="date" class="form-control" required aria-required="true"
+        aria-describedby="dateHelp" [(ngModel)]="ExpenseDate" />
+      <div id="dateHelp" class="form-text">Pick the expense date</div>
+    </div>
+
+
+    <div class="mb-3">
+      <label for="amount" class="form-label">Amount</label>
+      <input type="number" id="amount" name="amount" class="form-control" placeholder="Enter amount" required
+        aria-required="true" min="0" step="any" aria-describedby="amountHelp" [(ngModel)]="ExpenseAmt"/>
+      <div id="amountHelp" class="form-text">Enter the expense amount</div>
+    </div>
+
+    <div class="mb-3">
+      <label for="Purpose" class="form-label">Purpose</label>
+      <input type="text" id="Remark" name="Remark" class="form-control" placeholder="Enter Purpose" aria-required="true"
+        step="any" aria-describedby="RemarkHelp" [(ngModel)]="Purpose"/>
+      <div id="RemarkHelp" class="form-text">Enter the purpose</div>
+    </div>
+
+    <div class="btn-group" role="group" aria-label="Form actions">
+      <button type="submit" class="btn btn-primary" aria-label="Save expense" (click)="onSubmit()">
+        <span class="material-icons btn-material-icon" aria-hidden="true">save</span> Save
+      </button>
+      <button type="reset" class="btn btn-secondary" aria-label="Cancel entry" onclick="history.back()">
+        <span class="material-icons btn-material-icon" aria-hidden="true">clear</span> Cancel
+      </button>
+    </div>
+  </form>
+
+  
+</body>
+
+</html>

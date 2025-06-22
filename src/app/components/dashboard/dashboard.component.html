@@ -1,0 +1,47 @@
+<div class="d-flex" id="wrapper">
+
+ <app-sidebar-layout>
+  <router-outlet></router-outlet>
+</app-sidebar-layout>
+
+
+  <!-- Page Content -->
+  <div id="page-content-wrapper">
+    <div class="container-fluid py-4">
+      <h1 class="mb-4">Welcome!</h1>
+
+      <div class="row">
+        <!-- Groups -->
+        <div class="col-md-6 mb-4">
+          <div class="card shadow-sm">
+            <div class="card-body">
+              <h3 class="card-title text-primary">Your Groups</h3>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item" *ngFor="let group of groups">
+                  {{ group.name }}
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Expenses -->
+        <div class="col-md-6 mb-4">
+          <div class="card shadow-sm">
+            <div class="card-body">
+              <h3 class="card-title text-success">Recent Expenses</h3>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item" *ngFor="let exp of recentExpenses">
+                  ₹{{ exp.amount }} - {{ exp.description }}
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+</div>

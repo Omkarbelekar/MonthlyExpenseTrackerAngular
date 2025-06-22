@@ -1,0 +1,96 @@
+ <app-sidebar-layout>
+  <router-outlet></router-outlet>
+</app-sidebar-layout>
+
+<div class="container py-4">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white text-center">
+          <h3>Add Expense</h3>
+        </div>
+        <div class="card-body">
+          <form (ngSubmit)="addExpense()" #expenseForm="ngForm">
+
+            <div class="mb-3">
+              <label for="description" class="form-label">Description</label>
+              <input
+                type="text"
+                id="description"
+                class="form-control"
+                [(ngModel)]="expense.description"
+                name="description"
+                required
+                placeholder="Enter expense description"
+              />
+            </div>
+
+            <div class="mb-3">
+              <label for="amount" class="form-label">Amount (₹)</label>
+              <input
+                type="number"
+                id="amount"
+                class="form-control"
+                [(ngModel)]="expense.amount"
+                name="amount"
+                required
+                placeholder="Enter amount"
+              />
+            </div>
+
+            <div class="mb-3">
+              <label for="groupId" class="form-label">Group</label>
+              <select
+                id="groupId"
+                class="form-select"
+                [(ngModel)]="expense.groupId"
+                name="groupId"
+                required
+              >
+                <option *ngFor="let g of groups" [value]="g.Id">{{ g.Name }}</option>
+              </select>
+            </div>
+
+            <div class="mb-3">
+              <label for="paidByUserId" class="form-label">Paid By</label>
+              <select
+                id="paidByUserId"
+                class="form-select"
+                [(ngModel)]="expense.paidByUserId"
+                name="paidByUserId"
+                required
+              >
+                <option *ngFor="let u of users" [value]="u.Id">{{ u.Name }}</option>
+              </select>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Split With:</label>
+              <div class="row">
+                <div class="col-6" *ngFor="let u of users">
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      [value]="u.id"
+                      (change)="toggleOwedBy(u.id)"
+                      id="userCheckbox{{u.id}}"
+                    />
+                    <label class="form-check-label" [for]="'userCheckbox' + u.id">
+                      {{ u.name }}
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100 mt-3">
+              Add Expense
+            </button>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

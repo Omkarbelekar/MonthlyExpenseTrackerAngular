@@ -1,1 +1,24 @@
 /* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+
+   /* Custom toast styles */
+   .toast-success {
+     background: #4CAF50 !important;
+     color: white !important;
+   }
+   
+   .toast-info {
+     background: #2196F3 !important;
+     color: white !important;
+   }
+   
+   .toast-warning {
+     background: #FFC107 !important;
+     color: black !important;
+   }
+   
+   .toast-error {
+     background: #F44336 !important;
+     color: white !important;
+   }
+   
