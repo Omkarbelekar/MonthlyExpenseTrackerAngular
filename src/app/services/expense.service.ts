@@ -27,8 +27,18 @@ export class ExpenseService {
     // return this.http.get<any[]>(`${this.apiUrl}/MonthlyExpensesByUser`, data);
     return this.http.post(this.apiUrl+'/MonthlyExpensesByUser', data);
   }
+  getExepenseHistByCat(data: any) {
+    // return this.http.get<any[]>(`${this.apiUrl}/MonthlyExpensesByUser`, data);
+    return this.http.post(this.apiUrl+'/getExepenseHistByCat', data);
+  }
   deleteCategory(CategoryMasterId: any) {
     return this.http.get<any[]>(`${this.apiUrl}/deleteCategory/${CategoryMasterId}`);
+  }
+  deleteExpense(ExpenseMasterId: any) {
+    return this.http.get<any[]>(`${this.apiUrl}/deleteExpense/${ExpenseMasterId}`);
+  }
+  getExpenseData(ExpenseMasterId: any) {
+    return this.http.get<any[]>(`${this.apiUrl}/getExpenseData/${ExpenseMasterId}`);
   }
   getCategoryById(CategoryMasterId: any) {
     return this.http.get<any[]>(`${this.apiUrl}/getCategoryById/${CategoryMasterId}`);

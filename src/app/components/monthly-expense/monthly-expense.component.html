@@ -13,7 +13,7 @@
 
 <body>
   <main class="container" role="main" aria-labelledby="pageTitle">
-    <h1 id="pageTitle">Monthly Expenses</h1>
+    <h1 id="pageTitle">Monthly Expense Tracker</h1>
 
     <section class="top-row" aria-label="Filter and actions">
       <div>
@@ -50,7 +50,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let cat of categoriesData; let i = index">
+          <tr *ngFor="let cat of categoriesData; let i = index" (click)="selectCategory(cat.CategoryMasterId)">
             <td>{{ i + 1 }}</td>
             <td>{{ cat.CategoryName }}</td>
             <td>{{ formatCurrency(cat.AllowExpenseLimit) }}</td>

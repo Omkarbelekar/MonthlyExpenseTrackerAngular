@@ -1,0 +1,235 @@
+ body {
+      background-color: #ffffff;
+      color: #374151;
+      font-family: 'Inter', sans-serif;
+      padding: 1rem;
+      min-height: 100vh;
+      box-sizing: border-box;
+    }
+
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      background: #f9fafb;
+      border-radius: 12px;
+      padding: 2rem 1.5rem 3rem 1.5rem;
+      box-shadow: 0 4px 14px rgb(0 0 0 / 0.1);
+    }
+
+    h1 {
+      font-weight: 700;
+      font-size: 2.5rem;
+      color: #111827;
+      margin-bottom: 2rem;
+      line-height: 1.2;
+      text-align: center;
+    }
+
+    .top-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .top-row > div,
+    .top-row > button {
+      flex: 1 1 150px;
+      min-width: 150px;
+    }
+
+    label {
+      font-weight: 600;
+      color: #374151;
+      font-size: 1rem;
+      display: block;
+      margin-bottom: 0.35rem;
+    }
+
+    input[type="date"] {
+      border-radius: 0.75rem;
+      border: 1px solid #d1d5db;
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+      color: #111827;
+      width: 100%;
+      box-sizing: border-box;
+      transition: border-color 0.3s ease;
+      background-color: #ffffff;
+      min-height: 42px;
+    }
+
+    input[type="date"]:focus {
+      outline: none;
+      border-color: #2563eb;
+      box-shadow: 0 0 0 3px rgba(59,130,246,0.3);
+    }
+
+    button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-weight: 600;
+      font-size: 1rem;
+      border-radius: 12px;
+      padding: 0.5rem 1.3rem;
+      border: none;
+      cursor: pointer;
+      user-select: none;
+      transition: background 0.3s ease, box-shadow 0.3s ease;
+      min-height: 42px;
+      color: white;
+      box-shadow: 0 6px 12px rgb(37 99 235 / 0.3);
+    }
+    button:focus {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(59,130,246,0.6);
+    }
+
+    button.primary {
+      background: linear-gradient(135deg, #2563eb, #3b82f6);
+    }
+    button.primary:hover {
+      background: linear-gradient(135deg, #1d4ed8, #2563eb);
+      box-shadow: 0 10px 20px rgb(37 99 235 / 0.45);
+    }
+
+    button.secondary {
+      background: #6b7280;
+      box-shadow: 0 6px 12px rgb(107 114 128 / 0.3);
+    }
+    button.secondary:hover {
+      background: #4b5563;
+      box-shadow: 0 10px 20px rgb(75 85 99 / 0.45);
+    }
+
+    .material-icons.md-20 {
+      font-size: 20px;
+      vertical-align: middle;
+      line-height: 1;
+    }
+.back-button {
+      align-self: flex-start;
+      margin-bottom: 1rem;
+      background: none;
+      border: none;
+      color: #4b5563;
+      font-size: 1.125rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      transition: color 0.25s ease;
+      padding: 0;
+      line-height: 1;
+    }
+
+    .material-icons.md-18 {
+      font-size: 18px;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .back-button:hover {
+      color: #2563eb;
+    }
+:host ::ng-deep button {
+  box-shadow: none !important;
+}
+
+    table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0 0.75rem;
+    }
+
+    thead tr {
+      background-color: transparent;
+    }
+
+    thead th {
+      text-align: left;
+      font-weight: 700;
+      font-size: 1rem;
+      color: #374151;
+      padding: 0.5rem 1rem;
+      user-select: none;
+    }
+
+    tbody tr {
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 2px 6px rgb(0 0 0 / 0.08);
+      transition: transform 0.3s ease;
+      cursor: default;
+    }
+
+    tbody tr:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 16px rgb(37 99 235 / 0.25);
+    }
+
+    tbody td {
+      padding: 0.65rem 1rem;
+      vertical-align: middle;
+      color: #4b5563;
+      font-weight: 500;
+      font-size: 0.95rem;
+    }
+
+    tbody td:nth-child(1), /* Sr.no */
+    tbody td:nth-child(6)  /* Add new expense button */ {
+      text-align: center;
+      white-space: nowrap;
+      font-weight: 600;
+      color: #111827;
+    }
+
+    tbody td:nth-child(6) button {
+      font-size: 0.95rem;
+      padding: 0.3rem 0.9rem;
+      border-radius: 12px;
+      box-shadow: none;
+      cursor: pointer;
+      transition: background 0.25s ease;
+      background: linear-gradient(135deg, #2563eb, #3b82f6);
+      color: white;
+      border: none;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      user-select: none;
+    }
+    tbody td:nth-child(6) button:hover {
+      background: linear-gradient(135deg, #1d4ed8, #2563eb);
+    }
+
+    @media (max-width: 575px) {
+      h1 {
+        font-size: 1.8rem;
+        margin-bottom: 1.5rem;
+      }
+      .top-row {
+        gap: 0.8rem;
+      }
+      .top-row > div,
+      .top-row > button {
+        flex: 1 1 100%;
+        min-width: auto;
+      }
+      thead th, tbody td {
+        font-size: 0.85rem;
+        padding: 0.5rem 0.6rem;
+      }
+      tbody td:nth-child(1),
+      tbody td:nth-child(6) {
+        font-size: 0.9rem;
+        padding: 0.4rem 0.6rem;
+      }
+      tbody td:nth-child(6) button {
+        font-size: 0.85rem;
+        padding: 0.3rem 0.7rem;
+      }
+    }

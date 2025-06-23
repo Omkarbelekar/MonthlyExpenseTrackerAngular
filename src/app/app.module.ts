@@ -9,7 +9,7 @@ import { LoginComponent } from './components/user/login/login.component';
 import { RegisterComponent } from './components/user/register/register.component';
 import { CreateGroupComponent } from './components/group/create-group/create-group.component';
 import { AddExpenseComponent } from './components/expense/add-expense/add-expense.component';
-import { ExpenseHistoryComponent } from './components/expense/expense-history/expense-history.component';
+import { ExpenseHistoryComponent } from './components/expense-history/expense-history.component';
 import { GroupBalancesComponent } from './components/balances/group-balances/group-balances.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { AppRoutingModule } from './app-routing.module';

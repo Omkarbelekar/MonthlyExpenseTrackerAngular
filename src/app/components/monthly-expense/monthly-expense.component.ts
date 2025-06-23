@@ -47,11 +47,13 @@ export class MonthlyExpenseComponent implements OnInit {
   addNewExpense(categoryId: string): void {
     this.router.navigate(['/add-new-expense'], { queryParams: { Mode: 'A', categoryId: categoryId } });
   }
+  selectCategory(categoryId: string): void {
+    this.router.navigate(['/expensehistory'], { queryParams: { Mode: 'A', categoryId: categoryId,FromDate:this.FromDate,ToDate:this.ToDate } });
+  }
   ChangeDt(){
     this.getMonthlyExpenseData();
   }
   getMonthlyExpenseData() {
-    debugger;
     if (this.userInfo && this.userInfo.Id) {
       let id = this.userInfo.Id.toString();
       let obj = {
@@ -62,7 +64,6 @@ export class MonthlyExpenseComponent implements OnInit {
       this.ExpenseService.getMonthlyExpensesByUser(obj).subscribe({
         next: response => {
           if (response) {
-            debugger;
             this.categoriesData = response as any[];
             this.calculateTotals();
           }
@@ -82,11 +83,8 @@ export class MonthlyExpenseComponent implements OnInit {
     this.router.navigate(['/add-category'], { queryParams: { Mode: 'E', categoryId: categoryId } });
   }
   deleteCategory(categoryId: number): void {
-    debugger;
-    // Show confirmation dialog
     const confirmDelete = window.confirm('Are you sure you want to delete this category?');
     if (confirmDelete) {
-      debugger;
       if (categoryId) {
         this.ExpenseService.deleteCategory(categoryId).subscribe({
           next: response => {

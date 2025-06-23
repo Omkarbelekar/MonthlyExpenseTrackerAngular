@@ -15,6 +15,7 @@ export class AddNewCategoryExpenseComponent implements OnInit {
   }
   userInfo: any;
   categoriesData: any[] = [];
+  ExpenseMasterId: any = '';
   SelCategoryMasterId: any = '';
   categoryId: any = '';
   AllowedExpense: number = 0;
@@ -39,6 +40,28 @@ export class AddNewCategoryExpenseComponent implements OnInit {
     this.route.queryParams.subscribe(params => {
       this.mode = params['Mode'];
       this.categoryId = params['categoryId'];
+      this.ExpenseMasterId = params['ExpenseMasterId'];
+    });
+    if(this.ExpenseMasterId != '' && this.ExpenseMasterId != undefined && this.ExpenseMasterId != null && this.mode == 'E'){
+      this.getExpenseData();
+    }
+  }
+  getExpenseData(){
+    this.ExpenseService.getExpenseData(this.ExpenseMasterId).subscribe({
+      next: response => {
+        let Arr = response as any[];
+        if(Arr.length > 0){
+          this.SelCategoryMasterId = Arr[0].CategoryMasterId;
+          this.ExpenseDate = Arr[0].Date;
+          this.Purpose = Arr[0].Purpose;
+          this.ExpenseAmt = Arr[0].ExpenseAmount;
+          this.ExpenseMasterId = Arr[0].ExpenseMasterId;
+        }
+      },
+      error: err => {
+        console.error('Error deleting expense:', err);
+        this.toastService.show('Failed to delete expense','error');
+      }
     });
   }
   formatDateLocal(date: Date): string {
@@ -48,7 +71,13 @@ export class AddNewCategoryExpenseComponent implements OnInit {
     return `${year}-${month}-${day}`;
   }
   btnBack() {
-    this.router.navigate(['/monthly-expense']);
+    if(this.mode == 'E'){
+      this.router.navigate(['/expensehistory'], { queryParams: { Mode: 'A', categoryId: this.SelCategoryMasterId} });
+    }
+    else{
+      this.router.navigate(['/monthly-expense']);
+    }
+    
   }
   getAllCategories() {
     let obj = {
@@ -84,7 +113,6 @@ export class AddNewCategoryExpenseComponent implements OnInit {
     }
   }
   onSubmit() {
-    debugger;
     const trimmedPurpose = this.Purpose.trim();
     const expenseAmtVal = this.ExpenseAmt;
 
@@ -103,7 +131,8 @@ export class AddNewCategoryExpenseComponent implements OnInit {
       Purpose: trimmedPurpose,
       ExpenseAmt: expenseAmtVal,
       UserId: this.userInfo.Id,
-      Mode: this.mode
+      Mode: this.mode,
+      ExpenseMasterId: this.ExpenseMasterId
     };
 
     this.ExpenseService.addCatExpense(data).subscribe({
